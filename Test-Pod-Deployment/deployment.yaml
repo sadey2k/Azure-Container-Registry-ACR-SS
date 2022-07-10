@@ -1,0 +1,13 @@
+# apiVersion: apps/v1
+# kind: deployment 
+# metadata: 
+#   name:  test-app
+#   matchLabels:
+#     app: test-app
+# spec: 
+#     replicas: 2
+
+
+
+
+

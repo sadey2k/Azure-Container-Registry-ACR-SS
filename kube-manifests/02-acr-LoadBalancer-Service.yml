@@ -1,0 +1,7 @@
+    # spec:
+    #   containers:
+    #     - name: app1-acr01
+    #       image: acr01sade.azurecr.io/app1-acr/kube-nginx-acr:v1
+    #       imagePullPolicy: Always
+    #       ports:
+    #         - containerPort: 80
