@@ -28,6 +28,7 @@ stages:
           # can also use commit ID instead
           # $(Build.SourceVersion)
 
+# Copy files
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests'
@@ -35,6 +36,7 @@ stages:
         TargetFolder: '$(Build.ArtifactsDirectory)'
         OverWrite: true
 
+#Publish build artifacts
     - task: PublishBuildArtifacts@1
       inputs:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
