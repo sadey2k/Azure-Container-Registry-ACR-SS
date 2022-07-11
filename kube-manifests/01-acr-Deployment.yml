@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app4-acr01
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: app4-acr01
@@ -16,12 +16,12 @@ spec:
     spec:
         containers:
           - name: acrdemo-localdocker
-            image: acr01sade.azurecr.io/myapp/kube-nginx-acr:v2
+            image: acr01sade.azurecr.io/app4/app4ngnixaks
             imagePullPolicy: Always
             ports:
               - containerPort: 80
-        imagePullSecrets: # update secret name created 
-          - name: acrsade-secret 
+        # imagePullSecrets: # update secret name created 
+        #   - name: acrsade-secret 
 
 ---
 

@@ -5,3 +5,50 @@
     #       imagePullPolicy: Always
     #       ports:
     #         - containerPort: 80
+
+
+
+##############################################
+# SPN and secret deployment #
+##############################################
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: app1-acr01-deployment
+#   labels:
+#     app: app1-acr01
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: app1-acr01
+#   template:
+#     metadata:
+#       labels:
+#         app: app1-acr01
+#     spec:
+#         containers:
+#           - name: acrdemo-localdocker
+#             image: acr01sade.azurecr.io/myapp/kube-nginx-acr:v2
+#             imagePullPolicy: Always
+#             ports:
+#               - containerPort: 80
+#         imagePullSecrets: # update secret name created 
+#           - name: acrsade-secret 
+
+# ---
+
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: app1-acr01-service
+#   labels:
+#     app: app1-acr01
+# spec:
+#   type: LoadBalancer
+#   selector:
+#     app: app1-acr01
+#   ports:
+#     - port: 80
+#       targetPort: 80
