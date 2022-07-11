@@ -5,7 +5,7 @@ metadata:
   labels:
     app: app5-aks
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: app5-aks
@@ -16,7 +16,7 @@ spec:
     spec:
         containers:
           - name: acrdemo-aks-docker
-            image: acr01sade.azurecr.io/aks/app5ngnixaks
+            image: acr01sade.azurecr.io/aks-deployment/app5ngnixaks:v1
             imagePullPolicy: Always
             ports:
               - containerPort: 80
