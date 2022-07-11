@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: app5-acr01
+        app: app5-aks
     spec:
         containers:
           - name: acrdemo-aks-docker
