@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app1-acr01-deployment
+  name: app4-acr01-deployment
   labels:
-    app: app1-acr01
+    app: app4-acr01
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app1-acr01
+      app: app4-acr01
   template:
     metadata:
       labels:
-        app: app1-acr01
+        app: app4-acr01
     spec:
         containers:
           - name: acrdemo-localdocker
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app1-acr01-service
+  name: app4-acr01-service
   labels:
-    app: app1-acr01
+    app: app4-acr01
 spec:
   type: LoadBalancer
   selector:
-    app: app1-acr01
+    app: app4-acr01
   ports:
     - port: 80
       targetPort: 80
