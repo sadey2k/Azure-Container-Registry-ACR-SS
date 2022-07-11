@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app4-acr01-deployment
+  name: app5-aks-deployment
   labels:
-    app: app4-acr01
+    app: app5-aks
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: app4-acr01
+      app: app5-aks
   template:
     metadata:
       labels:
-        app: app4-acr01
+        app: app5-acr01
     spec:
         containers:
-          - name: acrdemo-localdocker
-            image: acr01sade.azurecr.io/app4/app4ngnixaks
+          - name: acrdemo-aks-docker
+            image: acr01sade.azurecr.io/aks/app5ngnixaks
             imagePullPolicy: Always
             ports:
               - containerPort: 80
@@ -29,13 +29,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app4-acr01-service
+  name: app5-aks-service
   labels:
-    app: app4-acr01
+    app: app5-aks
 spec:
   type: LoadBalancer
   selector:
-    app: app4-acr01
+    app: app5-aks
   ports:
     - port: 80
       targetPort: 80
