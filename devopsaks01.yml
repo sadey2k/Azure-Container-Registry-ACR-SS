@@ -4,7 +4,8 @@ trigger:
 - none
 
 variables:
-  tag: '$(Build.BuildId)'
+  tag: '$(Build.SourceVersion)' 
+  #'$(Build.BuildId)'
 
 pool: 'TestAgentsPool'
 
@@ -23,7 +24,9 @@ stages:
            repository: 'devopsaks01'
            command: 'buildAndPush'
            Dockerfile: '**/Dockerfile'
-           tags: '$tag'
+           tags: 
+             #$tag
+             $(Build.SourceVersion)
   
        - task: CopyFiles@2
          inputs:
