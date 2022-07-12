@@ -1,0 +1,39 @@
+# Flow: stages -> stage -> jobs -> job -> steps -> task1, task2, task3
+
+trigger:
+- none
+
+variables:
+  tag: $(Build.BuildId)
+
+pool: 'TestAgentsPool'
+
+stages:
+  - stage: Build
+    displayName: Build Job
+    jobs: 
+     - job: Build
+       displayName: Build Job
+       pool: 'TestAgentPool' 
+       steps:
+         
+       - task: Docker@2
+         inputs:
+           containerRegistry: 'acr01sade-service-connection'
+           repository: 'devopsaks01'
+           command: 'buildAndPush'
+           Dockerfile: '**/Dockerfile'
+           tags: '$tag'
+  
+       - task: CopyFiles@2
+         inputs:
+           SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifest'
+           Contents: '**'
+           TargetFolder: '$(Build.ArtifactsDirectory)'
+           OverWrite: true
+
+       - task: PublishBuildArtifacts@1
+         inputs:
+           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+           ArtifactName: 'kube-manifests'
+           publishLocation: 'Container'
