@@ -30,7 +30,7 @@ stages:
   
        - task: CopyFiles@2
          inputs:
-           SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifest'
+           SourceFolder: '$(System.DefaultWorkingDirectory)/kube-manifests'
            Contents: '**'
            TargetFolder: '$(Build.ArtifactsDirectory)'
            OverWrite: true
