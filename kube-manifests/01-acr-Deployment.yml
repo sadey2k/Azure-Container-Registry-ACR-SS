@@ -1,3 +1,6 @@
+############################
+## Deployment file ##
+############################
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -16,7 +19,7 @@ spec:
     spec:
         containers:
           - name: acrdemo-aks-docker
-            image: acr01sade.azurecr.io/aks-deployment/app5ngnixaks:v1
+            image: acr01sade.azurecr.io/custom2aksnginxapp2:v1
             imagePullPolicy: Always
             ports:
               - containerPort: 80
