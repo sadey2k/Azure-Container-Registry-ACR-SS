@@ -4,22 +4,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app5-aks-deployment
+  name: deployment01-aks-app1
   labels:
-    app: app5-aks
+    app: devop-app01
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app5-aks
+      app: devop-app01
   template:
     metadata:
       labels:
-        app: app5-aks
+        app: devop-app01
     spec:
         containers:
           - name: acrdemo-aks-docker
-            image: acr01sade.azurecr.io/custom2aksnginxapp2:v1
+            image: acr01sade.azurecr.io/devopsaks01:v1
             imagePullPolicy: Always
             ports:
               - containerPort: 80
@@ -32,13 +32,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app5-aks-service
+  name: devops-aks-service
   labels:
-    app: app5-aks
+    app: devopsaks01
 spec:
   type: LoadBalancer
   selector:
-    app: app5-aks
+    app: devopsaks01
   ports:
     - port: 80
       targetPort: 80
