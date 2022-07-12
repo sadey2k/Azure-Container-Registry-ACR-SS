@@ -3,6 +3,9 @@
 trigger:
 - none
 
+resources:
+- repo: self
+
 variables:
   tag: '$(Build.SourceVersion)' 
   #'$(Build.BuildId)'
@@ -20,13 +23,11 @@ stages:
          
        - task: Docker@2
          inputs:
-           containerRegistry: 'acr01sade-service-connection'
+           containerRegistry: 'devops-app-deployments-to-acr-svc'
            repository: 'devopsaks01'
            command: 'buildAndPush'
            Dockerfile: '**/Dockerfile'
-           tags: 
-             #$tag
-             $(Build.SourceVersion)
+           tags: '$(Build.SourceVersion)'
   
        - task: CopyFiles@2
          inputs:
