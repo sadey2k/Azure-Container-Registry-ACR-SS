@@ -19,7 +19,7 @@ spec:
     spec:
         containers:
           - name: acrdemo-aks-docker
-            image: acr01sade.azurecr.io/devopsaks01:4f952f096a00d117d8d081e57879bdec4c19d555
+            image: acr01sade.azurecr.io/devopsaks01:v1
             imagePullPolicy: Always
             ports:
               - containerPort: 80
