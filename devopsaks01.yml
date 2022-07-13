@@ -1,7 +1,7 @@
 # Flow: stages -> stage -> jobs -> job -> steps -> task1, task2, task3
 
 trigger:
-- none
+- main
 
 resources:
 - repo: self
