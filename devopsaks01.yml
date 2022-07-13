@@ -7,8 +7,9 @@ resources:
 - repo: self
 
 variables:
-  tag: '$(Build.SourceVersion)' 
-  #'$(Build.BuildId)'
+  tag: '$(Build.BuildId)'
+  #'$(Build.SourceVersion)' 
+  #
 
 pool: 'TestAgentsPool'
 
@@ -27,7 +28,7 @@ stages:
            repository: 'devopsaks01'
            command: 'buildAndPush'
            Dockerfile: '**/Dockerfile'
-           tags: '$(Build.SourceVersion)'
+           tags: '$(Build.BuildId)'
   
        - task: CopyFiles@2
          inputs:
